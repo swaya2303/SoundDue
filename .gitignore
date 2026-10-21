@@ -10,23 +10,30 @@ venv/
 ENV/
 reasoning/.venv/
 
+# Databases
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3
+backend/*.db
+
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 test-results/
+frontend/test-results/
+playwright-report/
+frontend/playwright-report/
 
 # Node / Frontend
 node_modules/
 frontend/node_modules/
 frontend/dist/
 dist/
-
-# Databases
-*.db
-*.sqlite
-*.sqlite3
-backend/*.db
 
 # Runtime upload storage
 storage/

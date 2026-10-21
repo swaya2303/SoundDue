@@ -13,6 +13,12 @@ from __future__ import annotations
 import sys
 import os
 
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _DATA = os.path.normpath(
     os.path.join(_HERE, "..", "..", "data", "synthetic",
@@ -73,13 +79,16 @@ def main() -> None:
             print(f"  ✗  {filename}: {r.text}")
         else:
             meta = r.json()
+            file_id = meta.get("file_id")
+            if file_id:
+                client.get(f"/files/{file_id}/mapping/suggestions")
             print(f"  ✓  {filename}  ({meta.get('row_count', '?')} rows)")
             uploaded += 1
     print(f"✓ {uploaded} files uploaded")
 
     # 3. Analyze
     r = client.post(f"/cases/{case_id}/analyze", timeout=60)
-    if r.status_code not in (200, 201):
+    if r.status_code not in (200, 201, 202):
         print(f"ERROR during analysis: {r.text}")
         sys.exit(1)
     result = r.json()
