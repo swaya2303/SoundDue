@@ -1,0 +1,15 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_01_midnight_train_unclaimed",
+  "description": "Writer A holds 60 %. The registration EXPLICITLY marks the remaining 40 % as 'unclaimed'. Rule R1 must flag this as a possible missing claim. Rule R2 (incomplete_ownership_info) must NOT fire because the gap is declared, not silent.",
+  "must_appear": [
+    {
+      "type": "possible_missing_claim",
+      "rule_id": "R1",
+      "description": "Source explicitly marks 40.0000 % as 'unclaimed' for WRK-S1-001 / mechanical / WW — a named claimant may exist."
+    }
+  ],
+  "must_not_flag": [
+    "incomplete_ownership_info"
+  ]
+}

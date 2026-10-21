@@ -1,0 +1,3 @@
+recording_id,work_id,source_label,verified
+REC-S3-001,WRK-S3-001,LabelX,true
+REC-S3-002,WRK-S3-002,LabelY,true

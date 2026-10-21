@@ -1,0 +1,12 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_03_same_title_different_writers",
+  "description": "Two distinct works share the title 'Golden Hour' but have different writers and IDs. SoundDue must never merge them. No ownership gaps exist. No findings expected.",
+  "must_appear": [],
+  "must_not_flag": [
+    "works_merged",
+    "title_match_link",
+    "incomplete_ownership_info",
+    "conflicting_shares"
+  ]
+}

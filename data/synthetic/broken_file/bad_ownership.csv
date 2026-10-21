@@ -1,0 +1,7 @@
+Work Code,Writer Code,Songwriter,Songwriter %,Convention,Rights Type,Territory,Valid From,Valid To,Claim Status
+WRK-X-001,WRT-A,Writer A,150.0000,publisher-share,mechanical,WW,2020-01-01,2030-12-31,claimed
+WRK-X-001,WRT-B,Writer B,30.0000,publisher-share,mechanical,WW,2020-01-01,2030-12-31,claimed
+WRK-X-001,WRT-B,Writer B,30.0000,publisher-share,mechanical,WW,2020-01-01,2030-12-31,claimed
+WRK-X-002,WRT-C,Writer C,-5.0000,publisher-share,performance,US,2023-01-01,2028-12-31,claimed
+WRK-X-002,WRT-D,Writer D,50.0000,publisher-share,performance,US,2025-01-01,2020-12-31,claimed
+WRK-X-003,WRT-E,Writer E,100.0000,publisher-share,sync,WW,2020-01-01,2030-12-31,approved

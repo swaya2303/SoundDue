@@ -1,0 +1,16 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_04_conflicting_shares",
+  "description": "Two sources supply ownership data for WRK-S4-001 under the same scope (mechanical / WW / 2019-2029). Source A reports 60/40; Source B reports 50/50. SoundDue must flag conflicting_shares (R3).",
+  "must_appear": [
+    {
+      "type": "conflicting_shares",
+      "rule_id": "R3",
+      "description": "Writer A's share for WRK-S4-001 / mechanical / WW is reported as 60.0000 % by ownership_source_a.csv and 50.0000 % by ownership_source_b.csv — same scope, irreconcilable figures."
+    }
+  ],
+  "must_not_flag": [
+    "incomplete_ownership_info",
+    "incompatible_comparison"
+  ]
+}

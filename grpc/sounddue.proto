@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package sounddue;
+
+option py_generic_services = false;
+
+// ---------------------------------------------------------------------------
+// SoundDue RoyaltyReconciliation gRPC service
+//
+// Prototype stub — NOT connected to a production network.
+// To generate Python stubs:
+//   pip install grpcio-tools
+//   python -m grpc_tools.protoc \
+//       -I grpc \
+//       --python_out=grpc \
+//       --grpc_python_out=grpc \
+//       grpc/sounddue.proto
+// ---------------------------------------------------------------------------
+
+service RoyaltyReconciliation {
+  // Run analysis on an existing SoundDue case and return a summary of findings.
+  rpc AnalyzeRoyaltyRecords (AnalyzeRequest) returns (AnalyzeResponse);
+
+  // Return the current findings for a case without re-running analysis.
+  rpc GetFindings (GetFindingsRequest) returns (AnalyzeResponse);
+}
+
+// ---------------------------------------------------------------------------
+// Requests
+// ---------------------------------------------------------------------------
+
+message AnalyzeRequest {
+  // ID of the SoundDue case to analyze (must already have files uploaded).
+  int32 case_id = 1;
+}
+
+message GetFindingsRequest {
+  int32 case_id = 1;
+}
+
+// ---------------------------------------------------------------------------
+// Responses
+// ---------------------------------------------------------------------------
+
+message AnalyzeResponse {
+  int32 case_id = 1;
+  int32 finding_count = 2;
+  int32 record_count = 3;
+  int32 link_count = 4;
+  repeated FindingSummary findings = 5;
+}
+
+message FindingSummary {
+  int32    id            = 1;
+  string   finding_type  = 2;   // e.g. "share_sum_check"
+  string   rule_id       = 3;   // e.g. "RULE-SD-001"
+  string   rule_version  = 4;   // e.g. "1.0"
+  string   severity      = 5;   // "info" | "warning" | "error"
+  string   summary       = 6;   // human-readable one-liner
+  string   status        = 7;   // "open" | "resolved" | "accepted" | "rejected"
+  string   uncertainty   = 8;
+  string   next_step     = 9;
+}

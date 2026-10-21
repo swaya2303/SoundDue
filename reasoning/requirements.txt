@@ -1,0 +1,25 @@
+# reasoning/requirements.txt
+#
+# Pinned dependencies for the SoundDue reasoning layer.
+#
+# RUNTIME NOTE
+# ------------
+# hyperon is EXPERIMENTAL. The MeTTa language and its Python bindings change
+# between minor releases; always review the changelog before upgrading.
+#
+# COMPATIBILITY
+# -------------
+# hyperon==0.2.10 ships pre-built wheels for:
+#   - CPython 3.8-3.12  (Windows win_amd64, Linux x86_64/aarch64, macOS)
+#   - CPython 3.13      NOT supported -- no wheel exists on PyPI
+#
+# This project uses the reasoning/ venv managed by `uv` at Python 3.12.
+# The backend (FastAPI) runs under Python 3.13 and never imports hyperon directly;
+# all reasoning calls go through reasoning/engine.py which selects the right mode.
+#
+# See: docs/reasoning-runtime.md
+#
+hyperon==0.2.10
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+httpx==0.27.0

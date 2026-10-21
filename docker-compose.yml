@@ -1,0 +1,55 @@
+# docker-compose.yml — optional convenience for SoundDue prototype
+# Usage:
+#   docker compose up --build
+#
+# NOT required for local dev (use the Makefile instead).
+# No auth, no migrations, SQLite volume mounted from host.
+
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/sounddue.db:/app/sounddue.db
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # MeTTa reasoning micro-service (METTA_MODE=http)
+  # EXPERIMENTAL: Hyperon / MeTTa is an experimental runtime.
+  # See docs/reasoning-runtime.md.
+  metta:
+    build:
+      context: .
+      dockerfile: reasoning/service/Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      # Rules mounted read-only — container cannot modify them
+      - ./reasoning/rules:/app/reasoning/rules:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

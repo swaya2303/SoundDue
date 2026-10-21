@@ -1,0 +1,9 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_05_incompatible_scopes",
+  "description": "Source A covers WW / all-rights / 2020-2025; Source B covers US / mechanical / 2019-2023. Scopes differ in territory, rights category, and period — shares must NOT be compared. No conflict finding expected.",
+  "must_appear": [],
+  "must_not_flag": [
+    "conflicting_shares"
+  ]
+}

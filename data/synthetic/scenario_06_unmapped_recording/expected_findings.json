@@ -1,0 +1,15 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_06_unmapped_recording",
+  "description": "REC-S6-001 ('Ghost Signal' demo) has no verified mapping to any work. REC-S6-002 (album version) IS mapped. SoundDue must flag R4 for the unmapped recording. A title match between REC-S6-001 and WRK-S6-001 must NOT be used as a link.",
+  "must_appear": [
+    {
+      "type": "unlinked_recording",
+      "rule_id": "R4",
+      "description": "REC-S6-001 has no verified mapping to any work in the supplied records. Title similarity to WRK-S6-001 is insufficient."
+    }
+  ],
+  "must_not_flag": [
+    "title_match_link"
+  ]
+}

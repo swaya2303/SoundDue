@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+reasoning/.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+
+# Runtime upload storage
+storage/
+backend/storage/
+
+# Environment and secrets
+.env
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/

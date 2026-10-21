@@ -1,0 +1,15 @@
+{
+  "_label": "FICTIONAL DEMO DATA",
+  "scenario": "scenario_02_silent_omission",
+  "description": "Writer A holds 60 %. Writer B's 40 % share is simply absent from the supplied records — no 'unclaimed' label exists. Rule R2 must flag incomplete_ownership_info. Rule R1 (possible_missing_claim) must NOT fire because the source never explicitly marks any share as unclaimed.",
+  "must_appear": [
+    {
+      "type": "incomplete_ownership_info",
+      "rule_id": "R2",
+      "description": "Shares for WRK-S2-001 / mechanical / WW sum to 60.0000 %, leaving 40 % missing from the supplied records."
+    }
+  ],
+  "must_not_flag": [
+    "possible_missing_claim"
+  ]
+}
